@@ -1,28 +1,51 @@
 package BFS;
 
+import java.util.Arrays;
+
 /*
  !Name: Aritra Ghorai
  !Date:27/02/2022
- ?Program Details: 
+ ?Program Details:2188. Minimum Time to Finish the Race
+ *https://leetcode.com/problems/minimum-time-to-finish-the-race/ 
    */
 public class Q3_Minimum_Time_To_Finish_The_Race {
-    public int minimumFinishTime(int[][] tires, int changeTime, int numLaps) {
-        return helper(tires, changeTime, numLaps, 0, 1);
+    public static void main(String[] args) {
+        int[][] tires = { { 2, 3 }, { 3, 4 } };
+        System.out.println(minimumFinishTime(tires, 5, 4));
+
     }
 
-    public int helper(int[][] tires, int changeTime, int numLaps, int index, int indexLap) {
-        if (numLaps == 0) {
-            return 0;
+    public static int minimumFinishTime(int[][] tires, int changeTime, int numLaps) {
+        long[] best = new long[numLaps + 1];
+        int maxLap = 0;
+        Arrays.fill(best, Long.MAX_VALUE);
+        for (int[] tire : tires) {
+            int fi = tire[0];
+            long ri = tire[1];
+            long time = fi;
+            long curLapTime = fi;
+            for (int i = 1; i <= numLaps && fi + changeTime > curLapTime; i++) {
+                if (time < best[i]) {
+                    best[i] = time;
+                }
+                maxLap = Math.max(maxLap, i);
+                curLapTime *= ri;
+                time += curLapTime;
+            }
         }
-        if (tires.length == index) {
-            return 10000;
-        }
-        int res = Integer.MAX_VALUE;
-        res = Math.min(res, helper(tires, changeTime, numLaps - 1, index, indexLap + 1)
-                + tires[index][0] * (int) Math.pow(tires[index][1], indexLap - 1));
-        res = Math.min(res, helper(tires, changeTime, numLaps - 1, index, 2) + changeTime
-                + tires[index][0]);
-        res = Math.min(res, helper(tires, changeTime, numLaps, index + 1, indexLap));
-        return res;
+        return f(best, maxLap, changeTime, numLaps, new Integer[numLaps + 1]);
     }
+
+    static int f(long[] best, int maxLap, int changeTime, int lap, Integer[] dp) {
+        if (lap == 0)
+            return -changeTime;
+        if (dp[lap] != null)
+            return dp[lap];
+        long mini = (int) 1e9;
+        for (int i = 1; i <= Math.min(maxLap, lap); i++) {
+            mini = Math.min(mini, f(best, maxLap, changeTime, lap - i, dp) + changeTime + best[i]);
+        }
+        return dp[lap] = (int) mini;
+    }
+
 }
