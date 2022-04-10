@@ -7,7 +7,6 @@ package String;
 *https://leetcode.com/problems/smallest-value-of-the-rearranged-number/ 
    */
 public class Q2_Smallest_Value_By_rearrange_vlaue {
-
     public long smallestNumber(long num) {
         int[] digits = new int[10];
         long temp = Math.abs(num);
@@ -17,7 +16,7 @@ public class Q2_Smallest_Value_By_rearrange_vlaue {
         }
         // *If Number is negetive
         if (num < 0) {
-            for (int i = 9; i >= 0; i++) {
+            for (int i = 9; i >= 0; i--) {
                 temp = addNum(digits, temp, i);
             }
             return -temp;
