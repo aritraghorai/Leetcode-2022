@@ -7,7 +7,6 @@ package Backtracking;
 *https://leetcode.com/problems/n-queens-ii/
    */
 public class Q7_N_Queen_2 {
-
     public int totalNQueens(int n) {
         return helper(new boolean[n][n], 0);
     }
