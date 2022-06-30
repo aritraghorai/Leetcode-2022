@@ -59,14 +59,16 @@ class Trie {
         return curr.end;
     }
 
-    public boolean startsWith(String prefix) {
+    public int startsWith(String prefix) {
+        int res = -1;
         Node curr = root;
         for (char ch : prefix.toCharArray()) {
             if (!curr.contains(ch))
-                return false;
+                return res;
             curr = curr.get(ch);
+            res++;
         }
-        return true;
+        return res;
     }
 
 }
