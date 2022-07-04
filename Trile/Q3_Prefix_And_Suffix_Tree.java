@@ -10,7 +10,6 @@ import java.util.Objects;
  *https://leetcode.com/problems/prefix-and-suffix-search/
    */
 public class Q3_Prefix_And_Suffix_Tree {
-    // TODO
 }
 
 class WordFilter {
