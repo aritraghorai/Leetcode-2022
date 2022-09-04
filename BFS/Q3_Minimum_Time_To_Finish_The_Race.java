@@ -1,4 +1,4 @@
-package BFS;
+package Bfs;
 
 import java.util.Arrays;
 
