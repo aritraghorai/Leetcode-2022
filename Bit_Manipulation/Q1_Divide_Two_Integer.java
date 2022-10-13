@@ -23,6 +23,6 @@ public class Q1_Divide_Two_Integer {
             res += (1 << count);
             dividend -= (divisor << count);
         }
-        return sign ? -res : res;
+        return sign ? -res : res;	
     }
 }

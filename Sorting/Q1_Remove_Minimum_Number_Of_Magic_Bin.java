@@ -9,13 +9,13 @@ import java.util.Arrays;
  *https://leetcode.com/problems/removing-minimum-number-of-magic-beans/
    */
 public class Q1_Remove_Minimum_Number_Of_Magic_Bin {
-    public long minimumRemoval(int[] beans) {
-        long ans = Integer.MAX_VALUE, sum = 0;
-        Arrays.sort(beans);
-        for (int i = 0; i < beans.length; i++) {
-            sum += beans[i];
-            ans = Math.max(ans, (long) beans[i] * (beans.length - i));
-        }
-        return sum - ans;
-    }
+	public long minimumRemoval(int[] beans) {
+		long ans = Integer.MAX_VALUE, sum = 0;
+		Arrays.sort(beans);
+		for (int i = 0; i < beans.length; i++) {
+			sum += beans[i];
+			ans = Math.max(ans, (long) beans[i] * (beans.length - i));
+		}
+		return sum - ans;
+	}
 }
