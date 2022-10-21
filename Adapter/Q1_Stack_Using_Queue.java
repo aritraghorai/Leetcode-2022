@@ -12,6 +12,7 @@ public class Q1_Stack_Using_Queue {
 
 }
 
+
 class MyStack {
     LinkedList<Integer> qu;
 

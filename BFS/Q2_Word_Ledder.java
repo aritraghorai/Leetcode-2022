@@ -9,7 +9,7 @@ import java.util.*;
  *https://leetcode.com/problems/word-ladder/
    */
 public class Q2_Word_Ledder {
-    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+      public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         var set1 = new HashSet<String>();
         var set2 = new HashSet<String>();
         var qu = new LinkedList<String>();
