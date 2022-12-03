@@ -24,7 +24,7 @@ public class Q8_Most_Stone_Remove_With_Same_Row_Colm {
             maxRow = Math.max(maxRow, stone[0]);
             maxCol = Math.max(stone[1], maxCol);
         }
-        DisjointSet2 ds = new DisjointSet2(maxRow + maxCol + 2);
+        DS ds = new DS(maxRow + maxCol + 2);
         HashSet<Integer> set = new HashSet<>();
         for (var stone : stones) {
             int nodeRow = stone[0];
@@ -85,11 +85,11 @@ class DisjointSet {
 }
 
 // *Union By size */
-class DisjointSet2 {
+class DS {
     List<Integer> sizes = new ArrayList<>();
     List<Integer> parents = new ArrayList<>();
 
-    public DisjointSet2(int n) {
+    public DS(int n) {
         for (int i = 0; i < n; i++) {
             sizes.add(1);
             parents.add(i);
